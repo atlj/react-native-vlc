@@ -65,7 +65,6 @@ PODS:
     - hermes-engine/Pre-built (= 0.73.6)
   - hermes-engine/Pre-built (0.73.6)
   - libevent (2.1.12)
-  - MobileVLCKit (3.3.17)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2022.05.16.00):
     - boost
@@ -947,7 +946,6 @@ PODS:
   - react-native-vlc (0.1.0):
     - glog
     - hermes-engine
-    - MobileVLCKit (~> 3.3.0)
     - RCT-Folly (= 2022.05.16.00)
     - RCTRequired
     - RCTTypeSafety
@@ -1268,7 +1266,6 @@ SPEC REPOS:
     - FlipperKit
     - fmt
     - libevent
-    - MobileVLCKit
     - OpenSSL-Universal
     - SocketRocket
 
@@ -1396,7 +1393,6 @@ SPEC CHECKSUMS:
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 9cecf9953a681df7556b8cc9c74905de8f3293c0
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MobileVLCKit: c5dd1b0ae933dc9c2348099840e753496dcdd908
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 7169b2b1c44399c76a47b5deaaba715eeeb476c0
   RCTRequired: ca1d7414aba0b27efcfa2ccd37637edb1ab77d96
@@ -1420,7 +1416,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 4fed160d939e93a39049481f47744af246a7ac2c
   React-logger: 3eb80a977f0d9669468ef641a5e1fabbc50a09ec
   React-Mapbuffer: 84ea43c6c6232049135b1550b8c60b2faac19fab
-  react-native-vlc: 787909faae6f9c7a7b0c66018d27c7d625e5f5e6
+  react-native-vlc: f267c82db2b28bcef5431d9f175c4744cf6ef6d9
   React-nativeconfig: b4d4e9901d4cabb57be63053fd2aa6086eb3c85f
   React-NativeModulesApple: cd26e56d56350e123da0c1e3e4c76cb58a05e1ee
   React-perflogger: 5f49905de275bac07ac7ea7f575a70611fa988f2
