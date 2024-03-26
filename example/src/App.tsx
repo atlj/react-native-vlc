@@ -6,7 +6,7 @@ import { VlcView } from 'react-native-vlc';
 export default function App() {
   return (
     <View style={styles.container}>
-      <VlcView color="#32a852" style={styles.box} />
+      <VlcView style={styles.box} />
     </View>
   );
 }
@@ -18,8 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    width: '100%',
+    height: '100%',
   },
 });

@@ -1,4 +1,5 @@
 #import "VlcView.h"
+#import "react_native_vlc-Swift.h"
 
 #import <react/renderer/components/RNVlcViewSpec/ComponentDescriptors.h>
 #import <react/renderer/components/RNVlcViewSpec/EventEmitters.h>
@@ -14,7 +15,7 @@ using namespace facebook::react;
 @end
 
 @implementation VlcView {
-    UIView * _view;
+    VlcViewSwift * swiftImpl;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
@@ -27,10 +28,11 @@ using namespace facebook::react;
   if (self = [super initWithFrame:frame]) {
     static const auto defaultProps = std::make_shared<const VlcViewProps>();
     _props = defaultProps;
+      
+    NSURL * url = [[NSURL alloc] initWithString: @"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"];
+    swiftImpl = [[VlcViewSwift alloc] initWithUrl: url ];
 
-    _view = [[UIView alloc] init];
-
-    self.contentView = _view;
+    self.contentView = swiftImpl.view;
   }
 
   return self;
@@ -41,10 +43,10 @@ using namespace facebook::react;
     const auto &oldViewProps = *std::static_pointer_cast<VlcViewProps const>(_props);
     const auto &newViewProps = *std::static_pointer_cast<VlcViewProps const>(props);
 
-    if (oldViewProps.color != newViewProps.color) {
-        NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
-        [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
-    }
+//    if (oldViewProps.color != newViewProps.color) {
+//        NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
+//        [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
+//    }
 
     [super updateProps:props oldProps:oldProps];
 }
