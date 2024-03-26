@@ -1,0 +1,12 @@
+procs:
+  Metro: yarn example start
+  Install pods:
+    autostart: false
+    cwd: example/ios
+    shell: pod install
+  Fix linting:
+    autostart: false
+    shell:  yarn lint --fix
+  Typecheck:
+    autostart: false
+    shell: yarn typecheck
