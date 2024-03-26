@@ -5,15 +5,18 @@ public class VlcViewSwift: NSObject {
     let mediaPlayer = VLCMediaPlayer()
     var currentMedia: VLCMedia? {
         didSet {
+            mediaPlayer.stop()
             mediaPlayer.media = currentMedia
             mediaPlayer.play()
         }
     }
 
-    @objc public init(url: NSURL){
+    @objc public override init() {
+        super.init()
         mediaPlayer.drawable = self.view
-        currentMedia = VLCMedia(url: url as URL)
-        mediaPlayer.media = currentMedia
-        mediaPlayer.play()
+    }
+    
+    @objc public func setSrc(_ src: NSURL) {
+        currentMedia = VLCMedia(url: src as URL)
     }
 }

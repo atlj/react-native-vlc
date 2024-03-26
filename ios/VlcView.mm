@@ -28,9 +28,7 @@ using namespace facebook::react;
   if (self = [super initWithFrame:frame]) {
     static const auto defaultProps = std::make_shared<const VlcViewProps>();
     _props = defaultProps;
-      
-    NSURL * url = [[NSURL alloc] initWithString: @"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"];
-    swiftImpl = [[VlcViewSwift alloc] initWithUrl: url ];
+    swiftImpl = [[VlcViewSwift alloc] init];
 
     self.contentView = swiftImpl.view;
   }
@@ -42,11 +40,12 @@ using namespace facebook::react;
 {
     const auto &oldViewProps = *std::static_pointer_cast<VlcViewProps const>(_props);
     const auto &newViewProps = *std::static_pointer_cast<VlcViewProps const>(props);
-
-//    if (oldViewProps.color != newViewProps.color) {
-//        NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
-//        [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
-//    }
+    
+    if (oldViewProps.src != newViewProps.src) {
+        NSString * srcString = [NSString stringWithUTF8String:newViewProps.src.c_str()];
+        NSURL * url = [[NSURL alloc] initWithString: srcString];
+        [swiftImpl setSrc: url];
+    }
 
     [super updateProps:props oldProps:oldProps];
 }
@@ -54,20 +53,6 @@ using namespace facebook::react;
 Class<RCTComponentViewProtocol> VlcViewCls(void)
 {
     return VlcView.class;
-}
-
-- hexStringToColor:(NSString *)stringToConvert
-{
-    NSString *noHashString = [stringToConvert stringByReplacingOccurrencesOfString:@"#" withString:@""];
-    NSScanner *stringScanner = [NSScanner scannerWithString:noHashString];
-    
-    unsigned hex;
-    if (![stringScanner scanHexInt:&hex]) return nil;
-    int r = (hex >> 16) & 0xFF;
-    int g = (hex >> 8) & 0xFF;
-    int b = (hex) & 0xFF;
-    
-    return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
 }
 
 @end

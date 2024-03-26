@@ -10,6 +10,6 @@
 
 RCT_EXPORT_MODULE(VlcView)
 
-RCT_EXPORT_VIEW_PROPERTY(color, NSString)
+RCT_EXPORT_VIEW_PROPERTY(src, NSString)
 
 @end

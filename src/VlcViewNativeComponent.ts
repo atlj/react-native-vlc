@@ -2,7 +2,12 @@ import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNati
 import type { ViewProps } from 'react-native';
 
 interface NativeProps extends ViewProps {
-  color?: string;
+  /**
+   * The source of the media to play.
+   * You can use a URL or a file path.
+   * @example 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+   */
+  src: string;
 }
 
 export default codegenNativeComponent<NativeProps>('VlcView');

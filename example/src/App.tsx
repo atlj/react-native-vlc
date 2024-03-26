@@ -6,7 +6,10 @@ import { VlcView } from 'react-native-vlc';
 export default function App() {
   return (
     <View style={styles.container}>
-      <VlcView style={styles.box} />
+      <VlcView
+        src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        style={styles.box}
+      />
     </View>
   );
 }
