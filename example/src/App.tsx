@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Button, SafeAreaView, StyleSheet, View } from 'react-native';
 import { VlcView } from 'react-native-vlc';
 import { VIDEOS, VideoPicker } from './VideoPicker';
+import { ProgressBar } from './ProgressBar';
+import { useSharedValue } from 'react-native-reanimated';
 
 export default function App() {
   const [showVideoSelector, setShowVideoSelector] = useState(false);
@@ -11,18 +13,26 @@ export default function App() {
     VIDEOS[0]
   );
   const [isPlaying, setIsPlaying] = useState(true);
+  const progress = useSharedValue(0);
 
   return (
     <View style={styles.container}>
       <VlcView
-        onProgress={(event) =>
-          console.log('progress', event.nativeEvent.totalTime)
-        }
+        onProgress={(event) => {
+          progress.value = event.nativeEvent.currentTime;
+        }}
         src={selectedVideo.source}
         playing={isPlaying}
         style={styles.box}
       />
-      <SafeAreaView style={styles.buttonContainer}>
+      <SafeAreaView style={styles.absoluteContainer}>
+        <ProgressBar
+          progress={progress}
+          style={{
+            position: 'absolute',
+            bottom: '30%',
+          }}
+        />
         <View style={styles.button}>
           <Button
             title="Select video"
@@ -54,9 +64,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  buttonContainer: {
+  absoluteContainer: {
     position: 'absolute',
     height: '100%',
+    width: '100%',
     justifyContent: 'flex-end',
   },
   button: {
