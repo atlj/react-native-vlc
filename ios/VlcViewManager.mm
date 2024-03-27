@@ -1,7 +1,7 @@
 #import <React/RCTViewManager.h>
 #import <React/RCTUIManager.h>
 #import "RCTBridge.h"
-#import "VlcView.h"
+#import "ReactNativeVLC.h"
 
 @interface VlcViewManager : RCTViewManager
 @end

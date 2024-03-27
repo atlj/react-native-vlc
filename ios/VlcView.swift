@@ -46,7 +46,7 @@ class PlayerDelegate: NSObject, VLCMediaPlayerDelegate {
     public func mediaPlayerTimeChanged(_ aNotification: Notification!) {
         let player = aNotification.object as! VLCMediaPlayer
         let currentTime = Double(player.position)
-        let totalTime = Double(player.media.lengthWait(until: .distantFuture).intValue / 1000)
+        let totalTime = Double(player.media.lengthWait(until: .distantFuture).intValue)
         
         var progressEvent = ProgressEvent(currentTime: currentTime, totalTime: totalTime)
         

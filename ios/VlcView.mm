@@ -1,5 +1,5 @@
-#import "VlcView.h"
-#import "react_native_vlc-Swift.h"
+#import "ReactNativeVLC.h"
+#import "ReactNativeVLC-Swift.h"
 
 #import <react/renderer/components/RNVlcViewSpec/ComponentDescriptors.h>
 #import <react/renderer/components/RNVlcViewSpec/EventEmitters.h>
