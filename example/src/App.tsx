@@ -1,22 +1,33 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { Button, Modal, SafeAreaView, StyleSheet, View } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, View } from 'react-native';
 import { VlcView } from 'react-native-vlc';
 import { VIDEOS, VideoPicker } from './VideoPicker';
 
 export default function App() {
   const [showVideoSelector, setShowVideoSelector] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(VIDEOS[0]);
+  const [selectedVideo, setSelectedVideo] = useState<(typeof VIDEOS)[number]>(
+    VIDEOS[0]
+  );
+  const [isPlaying, setIsPlaying] = useState(true);
 
   return (
     <View style={styles.container}>
-      <VlcView src={selectedVideo.source} style={styles.box} />
+      <VlcView
+        src={selectedVideo.source}
+        playing={isPlaying}
+        style={styles.box}
+      />
       <SafeAreaView style={styles.buttonContainer}>
         <View style={styles.button}>
           <Button
             title="Select video"
             onPress={() => setShowVideoSelector(true)}
+          />
+          <Button
+            title={isPlaying ? 'Pause' : 'Play'}
+            onPress={() => setIsPlaying((prev) => !prev)}
           />
         </View>
       </SafeAreaView>

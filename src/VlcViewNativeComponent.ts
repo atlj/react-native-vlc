@@ -8,6 +8,10 @@ interface NativeProps extends ViewProps {
    * @example 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
    */
   src: string;
+  /**
+   * Is the media playing?
+   */
+  playing: boolean;
 }
 
 export default codegenNativeComponent<NativeProps>('VlcView');

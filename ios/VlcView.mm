@@ -46,6 +46,10 @@ using namespace facebook::react;
         NSURL * url = [[NSURL alloc] initWithString: srcString];
         [swiftImpl setSrc: url];
     }
+    
+    if (oldViewProps.playing != newViewProps.playing) {
+        [swiftImpl setPlaying: newViewProps.playing];
+    }
 
     [super updateProps:props oldProps:oldProps];
 }
