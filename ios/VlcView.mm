@@ -59,8 +59,8 @@ using namespace facebook::react;
     
     swiftImpl.onProgress = ^(ProgressEvent* progressEvent) {
         VlcViewEventEmitter::OnProgress event;
-        event.currentTime = progressEvent->currentTime;
-        event.totalTime = progressEvent->totalTime;
+        event.progress = progressEvent->progress;
+        event.duration = progressEvent->duration;
         emitter.onProgress(event);
     };
     

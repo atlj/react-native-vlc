@@ -18,8 +18,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <VlcView
-        onProgress={(event) => {
-          progress.value = event.nativeEvent.currentTime;
+        onProgress={({ nativeEvent }) => {
+          progress.value = nativeEvent.progress;
         }}
         src={selectedVideo.source}
         playing={isPlaying}

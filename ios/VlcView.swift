@@ -23,8 +23,11 @@ public class VlcViewSwift: NSObject {
     }
     let mediaPlayerDelegate = PlayerDelegate()
     @objc public var onProgress: OnProgress? {
-        didSet {
-            mediaPlayerDelegate.onProgress = onProgress
+        get {
+            mediaPlayerDelegate.onProgress
+        }
+        set {
+            mediaPlayerDelegate.onProgress = newValue
         }
     }
 
@@ -45,10 +48,10 @@ class PlayerDelegate: NSObject, VLCMediaPlayerDelegate {
     
     public func mediaPlayerTimeChanged(_ aNotification: Notification!) {
         let player = aNotification.object as! VLCMediaPlayer
-        let currentTime = Double(player.position)
-        let totalTime = Double(player.media.lengthWait(until: .distantFuture).intValue)
+        let progress = Double(player.position)
+        let duration = Double(player.media.lengthWait(until: .distantFuture).intValue)
         
-        var progressEvent = ProgressEvent(currentTime: currentTime, totalTime: totalTime)
+        var progressEvent = ProgressEvent(progress: progress, duration: duration)
         
         guard let onProgress = onProgress else {
             return

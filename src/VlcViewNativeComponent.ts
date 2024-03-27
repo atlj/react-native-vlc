@@ -6,8 +6,8 @@ import type {
 } from 'react-native/Libraries/Types/CodegenTypes';
 
 export type ProgressEvent = Readonly<{
-  currentTime: Double;
-  totalTime: Double;
+  progress: Double;
+  duration: Double;
 }>;
 
 interface NativeProps extends ViewProps {

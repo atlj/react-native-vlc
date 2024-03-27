@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_END
 #endif /* RCT_NEW_ARCH_ENABLED */
 
 typedef struct ProgressEvent {
-    double currentTime;
-    double totalTime;
+    double progress;
+    double duration;
 } ProgressEvent;
 
 typedef void (^OnProgress)(ProgressEvent *);
