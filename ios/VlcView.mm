@@ -54,6 +54,20 @@ using namespace facebook::react;
     [super updateProps:props oldProps:oldProps];
 }
 
+- (void)updateEventEmitter:(const facebook::react::EventEmitter::Shared &)eventEmitter {
+    const auto &emitter = *std::static_pointer_cast<VlcViewEventEmitter const>(eventEmitter);
+    
+    swiftImpl.onProgress = ^(ProgressEvent* progressEvent) {
+        VlcViewEventEmitter::OnProgress event;
+        event.currentTime = progressEvent->currentTime;
+        event.totalTime = progressEvent->totalTime;
+        emitter.onProgress(event);
+    };
+    
+    [super updateEventEmitter: eventEmitter];
+}
+
+
 Class<RCTComponentViewProtocol> VlcViewCls(void)
 {
     return VlcView.class;

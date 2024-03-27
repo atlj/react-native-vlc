@@ -17,3 +17,10 @@ NS_ASSUME_NONNULL_END
 
 #endif /* VlcViewNativeComponent_h */
 #endif /* RCT_NEW_ARCH_ENABLED */
+
+typedef struct ProgressEvent {
+    double currentTime;
+    double totalTime;
+} ProgressEvent;
+
+typedef void (^OnProgress)(ProgressEvent *);

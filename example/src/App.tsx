@@ -15,6 +15,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <VlcView
+        onProgress={(event) =>
+          console.log('progress', event.nativeEvent.totalTime)
+        }
         src={selectedVideo.source}
         playing={isPlaying}
         style={styles.box}
