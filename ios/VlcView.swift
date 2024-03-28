@@ -41,6 +41,13 @@ public class VlcViewSwift: NSObject {
     @objc public func setSrc(_ src: NSURL) {
         currentMedia = VLCMedia(url: src as URL)
     }
+    
+    @objc public func seek(_ position: Double) {
+        guard let currentMedia = currentMedia else {
+            return
+        }
+        
+    }
 }
 
 class PlayerDelegate: NSObject, VLCMediaPlayerDelegate {

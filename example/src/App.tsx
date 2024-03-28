@@ -14,10 +14,12 @@ export default function App() {
   );
   const [isPlaying, setIsPlaying] = useState(true);
   const progress = useSharedValue(0);
+  const playerRef = React.useRef(null);
 
   return (
     <View style={styles.container}>
       <VlcView
+        ref={playerRef}
         onProgress={({ nativeEvent }) => {
           progress.value = nativeEvent.progress;
         }}
@@ -37,6 +39,11 @@ export default function App() {
           <Button
             title="Select video"
             onPress={() => setShowVideoSelector(true)}
+          />
+          <Button
+            title="Seek"
+            onPress={() => playerRef.current?.seek(0.5)}
+
           />
           <Button
             title={isPlaying ? 'Pause' : 'Play'}

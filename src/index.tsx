@@ -1,2 +1,1 @@
-export { default as VlcView } from './VlcViewNativeComponent';
-export * from './VlcViewNativeComponent';
+export { VlcView } from './VlcView';
